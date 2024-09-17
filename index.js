@@ -10,11 +10,23 @@ const app = createApp({
 
 /* Startseite */
 app.get("/", async function (req, res) {
-  res.render("start", {});
+  res.render("home", {});
 });
 
 app.get("/impressum", async function (req, res) {
   res.render("impressum", {});
+});
+
+app.get("/new_post", async function (req, res) {
+  res.render("new_post", {});
+});
+
+app.get("/log-in", async function (req, res) {
+  res.render("log-in", {});
+});
+
+app.get("/register", async function (req, res) {
+  res.render("register", {});
 });
 
 /* Wichtig! Diese Zeilen müssen immer am Schluss der Website stehen! */
