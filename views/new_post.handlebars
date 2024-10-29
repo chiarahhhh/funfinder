@@ -1,52 +1,45 @@
-<form class="new_post">
+<form class="new_post" action="/create_post" method="post">
 
-  <input
-    type="image"
-    id="post_image"
-    name="post_image"
-    placeholder="Beitragsbild"
-  />
+  <div id="newpostform">
+    <div class="form">
+      <input type="text" id="title" name="title" placeholder="Beitragstitel" />
+      <input type="file" id="image" name="image" placeholder="Beitragsbild" />
 
-  <input
-    type="text"
-    id="post_title"
-    name="post_title"
-    placeholder="Beitragstitel"
-  />
+      <div class="steckbrief">
+        Kategorie
+        <select id="activitycategory" name="activitycategory">
 
-  <div>
-    <div class="steckbrief">
-      Kategorie
-      <input
-        type="text"
-        id="post_category"
-        name="post_category"
-        placeholder="kategorie"
-      />
+          <option value="Outdoor">Outdoor</option>
+          <option value="Indoor">Indoor</option>
+          <option value="Kultur">Kultur</option>
+          <option value="Sport">Sport</option>
+          <option value="Wellness">Wellness</option>
+          <option value="Essen">Essen</option>
+          <option value="Abenteuer">Abenteuer</option>
+          <option value="Veranstaltungen">Veranstaltungen</option>
 
-      Preis
-      <input
-        type="text"
-        id="post_price"
-        name="post_price"
-        placeholder="preis"
-      />
+        </select>
 
-      Ort
-      <input type="text" id="post_place" name="post_place" placeholder="ort" />
+        Preis
+        <input type="text" id="price" name="price" placeholder="preis" />
 
-      Personenanzahl
-      <input
-        type="text"
-        id="post_people"
-        name="post_people"
-        placeholder="personen"
-      />
+        Ort
+        <input type="text" id="place" name="place" placeholder="ort" />
+
+        Personenanzahl
+        <input
+          type="text"
+          id="numberofpeople"
+          name="numberofpeople"
+          placeholder="personen"
+        />
+
+      </div>
 
       <input
         type="text"
-        id="post_text"
-        name="post_text"
+        id="description"
+        name="description"
         placeholder="Beitragstext"
       />
 
