@@ -10,6 +10,10 @@ const app = createApp({
 
 /* Startseite */
 app.get("/", async function (req, res) {
+  if (!req.session.userid) {
+    res.redirect("/login");
+    return;
+  }
   const posts = await app.locals.pool.query("select * from posts");
   res.render("home", { posts: posts.rows });
 });
@@ -26,11 +30,15 @@ app.get("/impressum", async function (req, res) {
 });
 
 app.get("/new_post", async function (req, res) {
+  if (!req.session.userid) {
+    res.redirect("/login");
+    return;
+  }
   res.render("new_post", {});
 });
 
-app.get("/log-in", async function (req, res) {
-  res.render("log-in", {});
+app.get("/login", async function (req, res) {
+  res.render("login", {});
 });
 
 app.get("/register", async function (req, res) {

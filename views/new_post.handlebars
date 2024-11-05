@@ -1,9 +1,13 @@
 <form class="new_post" action="/create_post" method="post">
 
+  <label for="image" class="file-input-label">
+    <span class="file-icon">📷</span>
+    <p>Beitragsbild einfügen</p>
+  </label>
+  <input type="file" id="image" name="image" style="display: none;" />
   <div id="newpostform">
     <div class="form">
       <input type="text" id="title" name="title" placeholder="Beitragstitel" />
-      <input type="file" id="image" name="image" placeholder="Beitragsbild" />
 
       <div class="steckbrief">
         Kategorie
@@ -44,7 +48,10 @@
       />
 
     </div>
-    <input class="button" type="submit" value="Veröffentlichen" />
+    <div>
+
+      <input class="button" type="submit" value="Veröffentlichen" />
+    </div>
   </div>
 
 </form>
