@@ -1,6 +1,10 @@
 * {
   font-family: "cabin";
 }
+body {
+  margin: 0;
+  padding: 0;
+}
 
 header,
 footer {
@@ -131,15 +135,95 @@ img {
 
 .file-input-label:hover {
   background-color: #e0e0e0; /* Dunkleres Grau beim Hover */
-  color: #333; /* Etwas dunklere Farbe beim Hover */
+  color: #333;
 }
 
 .file-icon {
-  font-size: 48px; /* Größe des Icons */
-  margin-bottom: 8px; /* Abstand unter dem Icon */
+  font-size: 48px;
+  margin-bottom: 8px;
 }
 
 .file-input-label p {
   font-size: 18px;
   margin: 0;
+}
+
+/* Allgemeine Formatrichtlinien für das Formular */
+.login-form {
+  width: 60%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.589);
+  backdrop-filter: blur(10px); /* Weichzeichner-Effekt für den Hintergrund */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Leichter, weicher Schatten */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.login-form label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #dddddd40;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  border-color: #007bff;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.submit-btn {
+  padding: 12px;
+  background-color: #296f70;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(23, 82, 91, 0.3);
+}
+
+.submit-btn:hover {
+  background-color: #268b94;
+  box-shadow: 0 8px 12px rgba(42, 113, 114, 0.4);
+}
+
+.register-btn {
+  font-size: 16px;
+  color: #007bff;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+  align-self: center;
+  margin-top: 10px;
+}
+
+.register-btn:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }

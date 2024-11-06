@@ -2,12 +2,30 @@
   <div class="form">
     <h2>Registrieren</h2>
 
-    <form action="/register" method="POST">
-      E-Mail:
-      <input name="username" type="text" /><br />
-      Passwort:
-      <input name="password" type="password" /><br />
-      <input type="submit" value="Registrieren" />
+    <form action="/register" method="POST" class="login-form">
+      <label for="username">E-Mail:</label>
+      <input
+        id="username"
+        name="username"
+        type="text"
+        placeholder="E-Mail-Adresse"
+        required
+      /><br />
+
+      <label for="password">Passwort:</label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        placeholder="Passwort"
+        required
+      /><br />
+
+      <input type="submit" value="Registrieren" class="submit-btn" />
+      <p>
+        Bereits ein Konto?
+        <a href="/login" class="register-btn"> Anmelden</a></p>
+
     </form>
 
   </div>
