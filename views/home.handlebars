@@ -1,26 +1,27 @@
 <div class="landingpage">
-  <h1 class="title"> Funfinder</h1>
+  <h1 class="title">Funfinder</h1>
   <h2 class="claim">Dein Weg zu unvergesslichen Erlebnissen!</h2>
 </div>
 
 <form id="searchForm">
   <input type="text" id="search" name="search" placeholder="Suchen" required />
-
 </form>
 
-{{#posts}}
-  <hr />
-  <a href="/activity/{{id}}">
-    <div class="activityposts">
-      <img src="{{image}}" alt="" />
-      <h3>{{activitycategory}}</h3>
-      <h1>{{title}}</h1>
-      <div class="infos">
-        <h3>Ort: {{place}} </h3>
-        <h3>Preis: {{price}} </h3>
-        <h3>Anzahl Personen: {{numberofpeople}}</h3>
-      </div>
+<div class="activity-posts-container">
+  {{#posts}}
+    <div class="activitypost">
+      <a href="/activity/{{id}}">
+        <img src="{{image}}" alt="" />
+        <h3>{{activitycategory}}</h3>
+        <h1>{{title}}</h1>
+        <div class="infos">
+          <span>Ort: {{place}}</span>
+          <span>Preis: {{price}}</span>
+          <span>Personen: {{numberofpeople}}</span>
+        </div>
+      </a>
     </div>
-  </a>
 
-{{/posts}}
+  {{/posts}}
+
+</div>

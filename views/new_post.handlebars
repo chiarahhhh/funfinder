@@ -1,10 +1,15 @@
-<form class="new_post" action="/create_post" method="post">
+<form
+  class="new_post"
+  action="/create_post"
+  enctype="multipart/form-data"
+  method="post"
+>
 
   <label for="image" class="file-input-label">
     <span class="file-icon">📷</span>
     <p>Beitragsbild einfügen</p>
   </label>
-  <input type="file" id="image" name="image" style="display: none;" />
+  <input type="file" id="image" name="image" />
   <div id="newpostform">
     <div class="form">
       <input type="text" id="title" name="title" placeholder="Beitragstitel" />

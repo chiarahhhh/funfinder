@@ -1,4 +1,4 @@
-import { createApp } from "./config.js";
+import { createApp, upload } from "./config.js";
 
 const app = createApp({
   user: "holy_forest_9875",
@@ -45,17 +45,12 @@ app.get("/register", async function (req, res) {
   res.render("register", {});
 });
 
-/* Wichtig! Diese Zeilen müssen immer am Schluss der Website stehen! */
-app.listen(3010, () => {
-  console.log(`Example app listening at http://localhost:3010`);
-});
-
-app.post("/create_post", async function (req, res) {
+app.post("/create_post", upload.single("image"), async function (req, res) {
   await app.locals.pool.query(
-    "INSERT INTO posts (title, image,place, price, numberofpeople, activitycategory, description) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+    "INSERT INTO posts (title, image ,place, price, numberofpeople, activitycategory, description) VALUES ($1, $2, $3, $4, $5, $6, $7)",
     [
       req.body.title,
-      req.body.image,
+      req.file.filename,
       req.body.place,
       req.body.price,
       req.body.numberofpeople,
@@ -64,4 +59,9 @@ app.post("/create_post", async function (req, res) {
     ]
   );
   res.redirect("/");
+});
+
+/* Wichtig! Diese Zeilen müssen immer am Schluss der Website stehen! */
+app.listen(3010, () => {
+  console.log(`Example app listening at http://localhost:3010`);
 });

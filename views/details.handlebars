@@ -1,21 +1,49 @@
 {{#posts}}
 
-  <img src="{{image}}" alt="" />
 
-  <h1>{{title}}</h1>
 
-  <div class="infos_details">
-    <h3>Ort: {{place}} </h3>
-    <h3>Preis: {{price}} </h3>
+  <img class="post-image" src="{{image}}" alt="">
+  <div class="post-details">
+  <!-- Zurück-Pfeil -->
+  <a href="/posts" class="back-arrow">←</a>
+
+  <!-- Titel -->
+  <h1 class="post-title">{{title}}</h1>
+
+  <!-- Steckbrief (Kategorie, Preis, Ort, Anzahl Personen) -->
+  <div class="post-info">
+    <h3>Kategorie: {{activitycategory}}</h3>
+    <hr class="divider">
+    <h3>Preis: {{price}}</h3>
+    <hr class="divider">
+    <h3>Ort: {{place}}</h3>
+    <hr class="divider">
     <h3>Anzahl Personen: {{numberofpeople}}</h3>
+    <hr class="divider">
   </div>
 
-  <p>{{description}}</p>
+  <!-- Feine Linie -->
+  
+
+  <!-- Beitragstext -->
+  <p class="post-description">{{description}}</p>
 
 {{/posts}}
 
-{{#comments}}
-  <div class="comments">
-    <p>{{text}}</p>
+  <!-- Kommentare Abschnitt -->
+  <div class="comments-section">
+    <h2>Kommentare</h2>
+    {{#comments}}
+      <div class="comment">
+        <p class="username"><i>{{username}}</i></p>
+        <p class="comment-text">{{text}}</p>
+      </div>
+    {{/comments}}
+
+    <!-- Kommentieren Abschnitt -->
+    <div class="add-comment">
+      <button class="comment-button">+</button>
+      <span class="comment-text">Kommentieren</span>
+    </div>
   </div>
-{{/comments}}
+</div>
