@@ -2,10 +2,10 @@
 
 
 
-  <img class="post-image" src="{{image}}" alt="">
+<img src="/uploads/{{image}}" alt="{{title}}" />
   <div class="post-details">
   <!-- Zurück-Pfeil -->
-  <a href="/posts" class="back-arrow">←</a>
+  <a href="/" class="back-arrow">←</a>
 
   <!-- Titel -->
   <h1 class="post-title">{{title}}</h1>
@@ -28,7 +28,17 @@
   <!-- Beitragstext -->
   <p class="post-description">{{description}}</p>
 
+  <form action="/like/{{id}}" enctype="multipart/form-data" method="POST">
+    <input type="image" src="/like.png">
+  </form>
+
+  <form action="/comment/{{id}}" enctype="multipart/form-data" method="POST">
+    <input type="text" >
+  </form>
+
 {{/posts}}
+
+<p>{{likes.count}} Likes</p>
 
   <!-- Kommentare Abschnitt -->
   <div class="comments-section">
@@ -45,5 +55,9 @@
       <button class="comment-button">+</button>
       <span class="comment-text">Kommentieren</span>
     </div>
+
+
+    
+
   </div>
 </div>

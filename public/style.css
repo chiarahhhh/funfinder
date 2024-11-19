@@ -39,23 +39,6 @@ a {
   border-radius: 8px;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#newpostform {
-  display: flex;
-  flex-direction: row;
-}
-.steckbrief {
-  display: flex;
-  flex-direction: column;
-  align-content: space-evenly;
-  margin-bottom: 20px;
-  margin-top: 10px;
-}
-
 .registerform,
 .loginform {
   display: flex;
@@ -116,36 +99,6 @@ img {
   border: none;
   font-size: large;
   font-weight: 600;
-}
-
-/* new post upload image*/
-.file-input-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 200px;
-  background-color: grey;
-  color: black;
-  border: 2px dashed lightgray;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
-.file-input-label:hover {
-  background-color: #e0e0e0; /* Dunkleres Grau beim Hover */
-  color: #333;
-}
-
-.file-icon {
-  font-size: 48px;
-  margin-bottom: 8px;
-}
-
-.file-input-label p {
-  font-size: 18px;
-  margin: 0;
 }
 
 /* Allgemeine Formatrichtlinien für das Formular */
@@ -409,4 +362,122 @@ img {
 
 .comment-text:hover {
   text-decoration: underline;
+}
+
+/* test test test test test test test test test test test test test test*/
+
+.new_post {
+  width: 50%;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+#newpostform {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title input field */
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.steckbrief {
+  margin-bottom: 16px;
+  width: 50%;
+}
+
+/* Dropdown styling */
+select {
+  background-color: #f9f9f9;
+}
+
+/* Submit button */
+.button {
+  background-color: #52ceb9;
+  color: #fff;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  transition: background-color 0.3s;
+  margin-left: 20px;
+}
+
+.button:hover {
+  background-color: #0b887d;
+}
+
+#description {
+  min-height: 200px;
+  width: 100%;
+  resize: vertical;
+  border-radius: 8px;
+  font-size: 16px;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+  overflow-y: auto;
+  vertical-align: top;
+  padding: 10px;
+}
+
+#description:focus {
+  border-color: #69c9b7; /* Highlight border color on focus */
+}
+
+/* new post upload image*/
+.file-input-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 200px;
+  background-color: grey;
+  color: black;
+  border: 2px dashed lightgray;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.file-input-label:hover {
+  background-color: #e0e0e0; /* Dunkleres Grau beim Hover */
+  color: #333;
+}
+
+.file-icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.file-input-label p {
+  font-size: 18px;
+  margin: 0;
+}
+
+#image {
+  display: none;
 }

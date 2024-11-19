@@ -3,15 +3,19 @@
   <h2 class="claim">Dein Weg zu unvergesslichen Erlebnissen!</h2>
 </div>
 
-<form id="searchForm">
-  <input type="text" id="search" name="search" placeholder="Suchen" required />
+<form action="/" enctype="multipart/form-data" method="get">
+  Suchbegriff:
+  <input type="text" name="suche" id="search" /><br />
+  <input type="submit" />
 </form>
+
+<a href="/">Alle Beiträge anzeigen</a>
 
 <div class="activity-posts-container">
   {{#posts}}
     <div class="activitypost">
       <a href="/activity/{{id}}">
-        <img src="{{image}}" alt="" />
+        <img src="/uploads/{{image}}" alt="{{title}}" />
         <h3>{{activitycategory}}</h3>
         <h1>{{title}}</h1>
         <div class="infos">

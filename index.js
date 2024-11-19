@@ -14,15 +14,16 @@ app.get("/", async function (req, res) {
     res.redirect("/login");
     return;
   }
-  const posts = await app.locals.pool.query("select * from posts");
-  res.render("home", { posts: posts.rows });
-});
-
-app.get("/activity/:id", async function (req, res) {
-  const posts = await app.locals.pool.query(
-    `SELECT * FROM posts WHERE id = ${req.params.id}`
+  let posts = await app.locals.pool.query(
+    "select * from posts ORDER BY id DESC"
   );
-  res.render("details", { posts: posts.rows });
+  if (req.query.suche) {
+    posts = await app.locals.pool.query(
+      "SELECT * FROM posts WHERE title LIKE '%' || $1 || '%'",
+      [req.query.suche]
+    );
+  }
+  res.render("home", { posts: posts.rows });
 });
 
 app.get("/impressum", async function (req, res) {
@@ -59,6 +60,47 @@ app.post("/create_post", upload.single("image"), async function (req, res) {
     ]
   );
   res.redirect("/");
+});
+
+app.post("/like/:id", async function (req, res) {
+  if (!req.session.userid) {
+    res.redirect("/login");
+    return;
+  }
+  await app.locals.pool.query(
+    "INSERT INTO likes (post_id, user_id) VALUES ($1, $2)",
+    [req.params.id, req.session.userid]
+  );
+  res.redirect(`/activity/${req.params.id}`);
+});
+
+app.post("/comment/:id", async function (req, res) {
+  if (!req.session.userid) {
+    res.redirect("/login");
+    return;
+  }
+  await app.locals.pool.query(
+    "INSERT INTO comments (post_id, user_id, text) VALUES ($1, $2)",
+    [req.params.id, req.session.userid]
+  );
+  res.redirect(`/activity/${req.params.id}`);
+});
+
+app.get("/activity/:id", async function (req, res) {
+  if (!req.session.userid) {
+    res.redirect("/login");
+    return;
+  }
+  const posts = await app.locals.pool.query(
+    "SELECT * FROM posts WHERE id = $1",
+    [req.params.id]
+  );
+  const likes = await app.locals.pool.query(
+    "SELECT COUNT(user_id) FROM likes WHERE post_id = $1",
+    [req.params.id]
+  );
+  console.log(likes);
+  res.render("details", { posts: posts.rows[0], likes: likes.rows[0] });
 });
 
 /* Wichtig! Diese Zeilen müssen immer am Schluss der Website stehen! */
