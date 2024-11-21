@@ -28,35 +28,47 @@
   <!-- Beitragstext -->
   <p class="post-description">{{description}}</p>
 
+  <div class="likes">
   <form action="/like/{{id}}" enctype="multipart/form-data" method="POST">
-    <input type="image" src="/like.png">
+    <input class="likeheart" type="image" src="/like.png">
   </form>
+  {{/posts}}
+  <p>{{likes.count}} Likes</p>
 
-  <form action="/comment/{{id}}" enctype="multipart/form-data" method="POST">
-    <input type="text" >
-  </form>
+</div>
 
-{{/posts}}
 
-<p>{{likes.count}} Likes</p>
 
-  <!-- Kommentare Abschnitt -->
-  <div class="comments-section">
-    <h2>Kommentare</h2>
-    {{#comments}}
-      <div class="comment">
-        <p class="username"><i>{{username}}</i></p>
-        <p class="comment-text">{{text}}</p>
-      </div>
-    {{/comments}}
 
-    <!-- Kommentieren Abschnitt -->
-    <div class="add-comment">
-      <button class="comment-button">+</button>
-      <span class="comment-text">Kommentieren</span>
+
+
+    
+
+    <div class="comments-section">
+      <h2>Kommentare</h2>
+      {{#if comments.length}}
+        {{#each comments}}
+          <div class="comment">
+            <p class="username"><i>{{username}}</i></p>
+            <p class="comment-text">{{text}}</p>
+          </div>
+        {{/each}}
+      {{else}}
+        <p>Keine Kommentare vorhanden.</p>
+      {{/if}}
     </div>
-
-
+    <div class="add-comment">
+      <form action="/comment/{{posts.id}}" method="POST" id="commentForm">
+        <input 
+          type="text" 
+          name="comment" 
+          placeholder="Schreib einen Kommentar..." 
+          required 
+        />
+        <button type="submit" class="comment-button">Kommentieren</button>
+      </form>
+    </div>
+    
     
 
   </div>

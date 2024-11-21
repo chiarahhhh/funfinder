@@ -3,13 +3,12 @@
   <h2 class="claim">Dein Weg zu unvergesslichen Erlebnissen!</h2>
 </div>
 
-<form action="/" enctype="multipart/form-data" method="get">
-  Suchbegriff:
-  <input type="text" name="suche" id="search" /><br />
-  <input type="submit" />
+<form action="/" enctype="multipart/form-data" method="get" id="searchForm">
+  <input placeholder="Suchbegriff" type="text" name="suche" id="search" /><br />
+  <input type="submit" value="Senden" />
 </form>
 
-<a href="/">Alle Beiträge anzeigen</a>
+<a id="showAllLink" href="/">Alle Beiträge anzeigen</a>
 
 <div class="activity-posts-container">
   {{#posts}}

@@ -79,10 +79,14 @@ app.post("/comment/:id", async function (req, res) {
     res.redirect("/login");
     return;
   }
+
+  const commentText = req.body.comment;
   await app.locals.pool.query(
-    "INSERT INTO comments (post_id, user_id, text) VALUES ($1, $2)",
-    [req.params.id, req.session.userid]
+    "INSERT INTO comments (post_id, user_id, text) VALUES ($1, $2, $3)",
+    [req.params.id, req.session.userid, commentText]
   );
+
+  // Zurück zur Aktivitätsseite oder woanders hinleiten
   res.redirect(`/activity/${req.params.id}`);
 });
 
@@ -91,16 +95,28 @@ app.get("/activity/:id", async function (req, res) {
     res.redirect("/login");
     return;
   }
+
   const posts = await app.locals.pool.query(
     "SELECT * FROM posts WHERE id = $1",
     [req.params.id]
   );
+
   const likes = await app.locals.pool.query(
     "SELECT COUNT(user_id) FROM likes WHERE post_id = $1",
     [req.params.id]
   );
+
+  const comments = await app.locals.pool.query(
+    "SELECT c.text, u.username FROM comments c JOIN users u ON c.user_id = u.id WHERE c.post_id = $1",
+    [req.params.id]
+  );
+
   console.log(likes);
-  res.render("details", { posts: posts.rows[0], likes: likes.rows[0] });
+  res.render("details", {
+    posts: posts.rows[0],
+    likes: likes.rows[0],
+    comments: comments.rows,
+  });
 });
 
 /* Wichtig! Diese Zeilen müssen immer am Schluss der Website stehen! */
