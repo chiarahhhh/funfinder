@@ -30,6 +30,7 @@ app.get("/impressum", async function (req, res) {
   res.render("impressum", {});
 });
 
+/* Neuer Post */
 app.get("/new_post", async function (req, res) {
   if (!req.session.userid) {
     res.redirect("/login");
@@ -38,14 +39,17 @@ app.get("/new_post", async function (req, res) {
   res.render("new_post", {});
 });
 
+/* Login */
 app.get("/login", async function (req, res) {
   res.render("login", {});
 });
 
+/* Registrieren */
 app.get("/register", async function (req, res) {
   res.render("register", {});
 });
 
+/* Post erstellen mit Bild hochladen */
 app.post("/create_post", upload.single("image"), async function (req, res) {
   await app.locals.pool.query(
     "INSERT INTO posts (title, image ,place, price, numberofpeople, activitycategory, description) VALUES ($1, $2, $3, $4, $5, $6, $7)",
@@ -62,6 +66,7 @@ app.post("/create_post", upload.single("image"), async function (req, res) {
   res.redirect("/");
 });
 
+/* Liken  */
 app.post("/like/:id", async function (req, res) {
   if (!req.session.userid) {
     res.redirect("/login");
@@ -73,6 +78,8 @@ app.post("/like/:id", async function (req, res) {
   );
   res.redirect(`/activity/${req.params.id}`);
 });
+
+/* kommentieren */
 
 app.post("/comment/:id", async function (req, res) {
   if (!req.session.userid) {
@@ -90,6 +97,7 @@ app.post("/comment/:id", async function (req, res) {
   res.redirect(`/activity/${req.params.id}`);
 });
 
+/* Likes Anzahl anzeigen und Kommentare anzeigen */
 app.get("/activity/:id", async function (req, res) {
   if (!req.session.userid) {
     res.redirect("/login");
@@ -106,6 +114,7 @@ app.get("/activity/:id", async function (req, res) {
     [req.params.id]
   );
 
+  /* User Tabelle joinen um den Username zu erhalten */
   const comments = await app.locals.pool.query(
     "SELECT c.text, u.username FROM comments c JOIN users u ON c.user_id = u.id WHERE c.post_id = $1",
     [req.params.id]
